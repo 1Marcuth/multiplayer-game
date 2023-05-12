@@ -1,0 +1,28 @@
+{
+  "name": "multiplayer-game",
+  "version": "1.0.0",
+  "description": "",
+  "type": "module",
+  "main": "game.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/1Marcuth/multiplayer-game.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/1Marcuth/multiplayer-game/issues"
+  },
+  "homepage": "https://github.com/1Marcuth/multiplayer-game#readme",
+  "dependencies": {
+    "express": "^4.18.2",
+    "socket.io": "^4.6.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.22"
+  }
+}
