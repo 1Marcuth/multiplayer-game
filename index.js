@@ -45,5 +45,5 @@ sockets.on("connection", (socket) => {
 })
 
 server.listen(port, () => {
-    // console.log(`> [server] Listening on http://localhost:${port}/`)
+    console.log(`> [server] Listening on http://localhost:${port}/`)
 })
