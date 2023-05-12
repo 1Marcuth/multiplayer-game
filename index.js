@@ -17,22 +17,22 @@ const game = createGame({ width: 30, height: 30 })
 game.start()
 
 game.subscribe((command) => {
-    console.log(`> [server] Emitting '${command.type}'`)
+    // console.log(`> [server] Emitting '${command.type}'`)
     sockets.emit(command.type, command)
 })
 
 sockets.on("connection", (socket) => {
     const playerId = socket.id
-    console.log(`> [socket] Player conneted on server with id '${playerId}'.`)
+    // console.log(`> [socket] Player conneted on server with id '${playerId}'.`)
 
     game.addPlayer({ playerId })
     socket.emit("setup", game.state)
 
-    console.log(game.state)
+    // console.log(game.state)
 
     socket.on("disconnect", () => {
         game.removePlayer({ playerId })
-        console.log(`> [server] Player disconected '${playerId}'.`)
+        // console.log(`> [server] Player disconected '${playerId}'.`)
     })
 
     socket.on("move-player", (command) => {
@@ -45,5 +45,5 @@ sockets.on("connection", (socket) => {
 })
 
 server.listen(port, () => {
-    console.log(`> [server] Listening on http://localhost:${port}/`)
+    // console.log(`> [server] Listening on http://localhost:${port}/`)
 })

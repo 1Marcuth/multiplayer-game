@@ -1,8 +1,6 @@
 export default function updateScoreTable(scoreTable, game, currentPlayerId) {
     const maxResults = 10
 
-    console.log(game.state)
-
     let scoreTableInnerHTML = `
         <tr class="header">
             <td>Top 10 Jogadores</td>

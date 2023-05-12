@@ -17,7 +17,7 @@ export default function createGame(screen) {
     }
     
     function notifyAll(command) {
-        console.log(`Notifying ${observers.length} observers`)
+        // console.log(`Notifying ${observers.length} observers`)
 
         for (const observerFunction of observers) {
             observerFunction(command)
