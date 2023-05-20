@@ -11,7 +11,7 @@ const app = express()
 const server = http.createServer(app)
 const sockets = new socketio.Server(server)
 
-app.use(express.static("./public"))
+app.use(express.static("public"))
 
 const game = createGame({ width: 30, height: 30 })
 
@@ -37,10 +37,6 @@ sockets.on("connection", (socket) => {
 
         game.movePlayer(command)
     })
-})
-
-app.get("/game", (req, res) => {
-    return res.sendFile(path.resolve("public/index.html"))
 })
 
 app.get("/game-state", (req, res) => {
