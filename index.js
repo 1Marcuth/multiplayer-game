@@ -10,7 +10,7 @@ const app = express()
 const server = http.createServer(app)
 const sockets = new socketio.Server(server, {
     cors: {
-        origin: "http://localhost",
+        origin: "*",
         methods: ["GET", "POST"]
     }
 })
