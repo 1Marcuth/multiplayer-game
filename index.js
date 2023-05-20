@@ -8,12 +8,7 @@ const port = 3000
 
 const app = express()
 const server = http.createServer(app)
-const sockets = new socketio.Server(server, {
-    cors: {
-      origin: "http://localhost",
-      methods: ["GET", "POST"]
-    }
-})
+const sockets = new socketio.Server(server)
 
 app.use(express.static("public"))
 
