@@ -3,7 +3,6 @@ import express from "express"
 import http from "http"
 
 import createGame from "./public/src/js/game.js"
-import path from "path"
 
 const port = process.env.PORT || 3001
 
