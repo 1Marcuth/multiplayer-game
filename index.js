@@ -3,8 +3,9 @@ import express from "express"
 import http from "http"
 
 import createGame from "./public/src/js/game.js"
+import path from "path"
 
-const port = process.env.PORT || 3000
+const port = process.env.PORT || 3001
 
 const app = express()
 const server = http.createServer(app)
@@ -17,31 +18,33 @@ const game = createGame({ width: 30, height: 30 })
 game.start()
 
 game.subscribe((command) => {
-    // console.log(`> [server] Emitting '${command.type}'`)
     sockets.emit(command.type, command)
 })
 
 sockets.on("connection", (socket) => {
     const playerId = socket.id
-    // console.log(`> [socket] Player conneted on server with id '${playerId}'.`)
 
     game.addPlayer({ playerId })
     socket.emit("setup", game.state)
 
-    // console.log(game.state)
-
     socket.on("disconnect", () => {
         game.removePlayer({ playerId })
-        // console.log(`> [server] Player disconected '${playerId}'.`)
     })
 
     socket.on("move-player", (command) => {
-        // Sobrescrevendo dados por questão de segurança
         command.playerId = playerId
         command.type = "move-player"
 
         game.movePlayer(command)
     })
+})
+
+app.get("/game", (req, res) => {
+    return res.sendFile(path.resolve("public/index.html"))
+})
+
+app.get("/game-state", (req, res) => {
+    return res.send(game.state)
 })
 
 server.listen(port, () => {
