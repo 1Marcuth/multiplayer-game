@@ -4,7 +4,7 @@ import http from "http"
 
 import createGame from "./public/src/js/game.js"
 
-const port = 3000
+const port = process.env.PORT || 3000
 
 const app = express()
 const server = http.createServer(app)
